@@ -99,3 +99,43 @@
 .from-show-notify label{
 	padding-top: 0.65rem;
 }
+
+#sidebarToggle {
+	position: fixed;
+	top: 20px;
+	left: 20px;
+	z-index: 10000;
+	border: none;
+	background-color: #007bff;
+	color: white;
+	padding: 8px 12px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.sidebar.hidden {
+	width: 0 !important;
+	overflow: hidden;
+	transition: 0.3s ease;
+}
+.hidden {
+	display: none !important;
+}
+.main-container {
+	display: flex;
+	min-height: 100vh;
+}
+
+.sidebar {
+	width: 250px;
+	background-color: #2c3e50;
+}
+
+.content {
+	flex: 1;
+	display: flex;
+	justify-content: center; /* ORTALAMA BURADA SAÐLANIR */
+	align-items: flex-start; /* Yukarýdan baþlasýn */
+	padding: 40px;
+	background-color: #f8f9fa;
+}
+

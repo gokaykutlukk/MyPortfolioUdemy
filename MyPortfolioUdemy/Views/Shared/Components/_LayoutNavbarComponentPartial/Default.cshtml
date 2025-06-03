@@ -1,19 +1,18 @@
-﻿<div class="main-header">
-	<div class="logo-header">
-		<a href="index.html" class="logo">
-			Gökay Kutluk
-		</a>
-		<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<button class="topbar-toggler more"><i class="la la-ellipsis-v"></i></button>
-	</div>
+﻿@model List<ToDoList>
+
+<div class="logo-header" data-background-color="blue">
+	<a href="index.html" class="logo">Admin Paneli</a>
+	<button id="sidebarToggle" class="btn btn-dark ml-auto">
+		<i class="la la-bars"></i>
+	</button>
+</div>
+
 	<nav class="navbar navbar-header navbar-expand-lg">
 		<div class="container-fluid">
 
 			<form class="navbar-left navbar-form nav-search mr-md-3" action="">
 				<div class="input-group">
-					<input type="text" placeholder="Ara ..." class="form-control">
+					<input type="text" placeholder="Aranacak Kelimeyi Giriniz ..." class="form-control">
 					<div class="input-group-append">
 						<span class="input-group-text">
 							<i class="la la-search search-icon"></i>
@@ -27,61 +26,42 @@
 						<i class="la la-envelope"></i>
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="#">Activiteler</a>
-						<a class="dropdown-item" href="#">Diğer Aksiyonlar</a>
+						<a class="dropdown-item" href="#">Gelen Mesajlar</a>
+						<a class="dropdown-item" href="#">Yeni Mesaj</a>
 						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#">Başka Bir Şey</a>
+						<a class="dropdown-item" href="#">İletişim Paneli</a>
 					</div>
 				</li>
+			
+				
+				
 				<li class="nav-item dropdown hidden-caret">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						<i class="la la-bell"></i>
-						<span class="notification">3</span>
+						<span class="notification">@ViewBag.toDoListCount</span>
 					</a>
 					<ul class="dropdown-menu notif-box" aria-labelledby="navbarDropdown">
 						<li>
-							<div class="dropdown-title">Bildirimleriniz var</div>
+							<div class="dropdown-title">@ViewBag.toDoListCount Yeni Bildiriminiz Var</div>
 						</li>
 						<li>
 							<div class="notif-center">
-								<a href="#">
-									<div class="notif-icon notif-primary"> <i class="la la-user-plus"></i> </div>
-									<div class="notif-content">
-										<span class="block">
-											New user registered
-										</span>
-										<span class="time">5 minutes ago</span>
-									</div>
-								</a>
-								<a href="#">
-									<div class="notif-icon notif-success"> <i class="la la-comment"></i> </div>
-									<div class="notif-content">
-										<span class="block">
-											Rahmad commented on Admin
-										</span>
-										<span class="time">12 minutes ago</span>
-									</div>
-								</a>
-								<a href="#">
-									<div class="notif-img">
-										<img src="~/Ready-Bootstrap-Dashboard-master/assets/img/profile2.jpg" alt="Img Profile">
-									</div>
-									<div class="notif-content">
-										<span class="block">
-											Reza send messages to you
-										</span>
-										<span class="time">12 minutes ago</span>
-									</div>
-								</a>
-								<a href="#">
-									<div class="notif-icon notif-danger"> <i class="la la-heart"></i> </div>
-									<div class="notif-content">
-										<span class="block">
-											Farrah liked Admin
-										</span>
-										<span class="time">17 minutes ago</span>
-									</div>
-								</a>
+								
+								@foreach(var item in Model)
+								{
+									<a href="#">
+										<div class="notif-icon notif-success"> <i class="@item.ImageUrl"></i> </div>
+										<div class="notif-content">
+											<span class="block">
+												@item.Title
+											</span>
+											<span class="time">@item.Date.ToShortDateString()</span>
+										</div>
+									</a>
+								}
+								
+								
+								
 							</div>
 						</li>
 						<li>
@@ -90,25 +70,25 @@
 					</ul>
 				</li>
 				<li class="nav-item dropdown">
-					<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false"> <img src="~/Ready-Bootstrap-Dashboard-master/assets/img/profile.jpg" alt="user-img" width="36" class="img-circle"><span>Hizrian</span></span> </a>
+					<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false"> <img src="~/Ready-Bootstrap-Dashboard-master/assets/img/profile.jpg" alt="user-img" width="36" class="img-circle"><span>Admin</span></span> </a>
 					<ul class="dropdown-menu dropdown-user">
 						<li>
 							<div class="user-box">
 								<div class="u-img"><img src="~/Ready-Bootstrap-Dashboard-master/assets/img/profile.jpg" alt="user"></div>
 								<div class="u-text">
-									<h4>Gökay</h4>
-									<p class="text-muted">hello@themekita.com</p><a href="profile.html" class="btn btn-rounded btn-danger btn-sm">Profili Görüntüle</a>
+									<h4>Admin</h4>
+									<p class="text-muted">hello@themekita.com</p><a href="profile.html" class="btn btn-rounded btn-danger btn-sm">Profili Gör</a>
 								</div>
 							</div>
 						</li>
 						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#"><i class="ti-user"></i> Benim Probilim</a>
-						<a class="dropdown-item" href="#"></i> My Balance</a>
-						<a class="dropdown-item" href="#"><i class="ti-email"></i> İçerik</a>
+						<a class="dropdown-item" href="#"><i class="ti-user"></i>Profilim</a>
+						<a class="dropdown-item" href="#"></i> Siteye Git</a>
+						<a class="dropdown-item" href="#"><i class="ti-email"></i> Gelen Mesajlar</a>
 						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#"><i class="ti-settings"></i> Hesap Ayarları</a>
+						<a class="dropdown-item" href="#"><i class="ti-settings"></i> Şifre Değiştir</a>
 						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#"><i class="fa fa-power-off"></i> Çıkış</a>
+						<a class="dropdown-item" href="#"><i class="fa fa-power-off"></i> Çıkış Yap</a>
 					</ul>
 					<!-- /.dropdown-user -->
 				</li>
@@ -116,3 +96,10 @@
 		</div>
 	</nav>
 </div>
+
+<script>
+	document.getElementById("sidebarToggle").addEventListener("click", function () {
+		const sidebar = document.getElementById("mySidebar");
+		sidebar.classList.toggle("hidden");
+	});
+</script>

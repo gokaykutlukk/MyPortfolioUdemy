@@ -1,126 +1,92 @@
-﻿<div class="sidebar">
-	<div class="scrollbar-inner sidebar-wrapper">
-		<div class="user">
-			<div class="photo">
-				<img src="~/Ready-Bootstrap-Dashboard-master/assets/img/profile.jpg">
-			</div>
-			<div class="info">
-				<a class="" data-toggle="collapse" href="#collapseExample" aria-expanded="true">
-					<span>
-						Gökay
-						<span class="user-level">Admin</span>
-						<span class="caret"></span>
-					</span>
-				</a>
-				<div class="clearfix"></div>
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+	<meta charset="UTF-8">
+	<title>Admin Panel</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+	<style>
+		body {
+			display: flex;
+			min-height: 100vh;
+			margin: 0;
+			background-color: #f8f9fa;
+		}
 
-				<div class="collapse in" id="collapseExample" aria-expanded="true" style="">
-					<ul class="nav">
-						<li>
-							<a href="#profile">
-								<span class="link-collapse">Profil</span>
-							</a>
-						</li>
-						<li>
-							<a href="#edit">
-								<span class="accordion-item">Düzenle</span>
-							</a>
-						</li>
-						<li>
-							<a href="#settings">
-								<span class="link-collapse">Ayarlar</span>
-							</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<ul class="nav">
-			<li class="nav-item">
-				<a href="index.html">
-					<i class="la la-dashboard"></i>
-					<p>Dashboard</p>
-					<span class="badge badge-count"></span>
-				</a>
-			</li>
-			<li class="nav-item">
-				<a href="/Default/Index/">
-					<i class="la la-car"></i>
-					<p>Siteye Git</p>
-					<span class="badge badge-count"></span>
-				</a>
-			</li>
-			<li class="nav-item">
-				<a href="components.html">
-					<i class="la la-table"></i>
-					<p>Hakkımda</p>
-					<span class="badge badge-count"></span>
-				</a>
-			</li>
-			<li class="nav-item">
-				<a href="forms.html">
-					<i class="la la-keyboard-o"></i>
-					<p>Deneyimler</p>
-					<span class="la la-internet-explorer"></span>
-				</a>
-			</li>
-			<li class="nav-item">
-				<a href="tables.html">
-					<i class="la la-th"></i>
-					<p>Öne çıkanlar</p>
-					<span class="badge badge-count"></span>
-				</a>
-			</li>
-			<li class="nav-item">
-				<a href="notifications.html">
-					<i class="la la-bell"></i>
-					<p>İletişim</p>
-					<span class="badge badge-success"></span>
-				</a>
-			</li>
-			<li class="nav-item active">
-				<a href="typography.html">
-					<i class="la la-font"></i>
-					<p>Portfolyo</p>
-					<span class="badge badge-warning"></span>
-				</a>
-			</li>
-			<li class="nav-item">
-				<a href="icons.html">
-					<i class="la la-fonticons"></i>
-					<p>Yeteneklerim</p>
-				</a>
-			</li>
-			<li class="nav-item">
-				<a href="icons.html">
-					<i class="la la-info"></i>
-					<p>Refaranslarım</p>
-				</a>
-			</li>
-			<li class="nav-item">
-				<a href="icons.html">
-					<i class="la la-header"></i>
-					<p>Sosyal Meyda</p>
-				</a>
-			</li>
-			<li class="nav-item">
-				<a href="icons.html">
-					<i class="la la-deviantart"></i>
-					<p>Gelen Kutusu</p>
-				</a>
-			</li>
-			<li class="nav-item">
-				<a href="/Statistic/Index/">
-					<i class="la la-dropbox"></i>
-					<p>İstatistikler</p>
-				</a>
-			</li>
-			<li class="nav-item update-pro">
-				<button data-toggle="modal" data-target="#modalUpdate">
-					<i class="la la-hand-pointer-o"></i>
-					<p>Çıkış Yap</p>
-				</button>
-			</li>
-		</ul>
+		.sidebar {
+			width: 250px;
+			background-color: #343a40;
+			color: white;
+			position: fixed;
+			top: 0;
+			left: 0;
+			height: 100%;
+			padding-top: 20px;
+		}
+
+			.sidebar a {
+				color: white;
+				display: block;
+				padding: 10px 20px;
+				text-decoration: none;
+			}
+
+				.sidebar a:hover {
+					background-color: #495057;
+				}
+
+			.sidebar .sidebar-header {
+				font-size: 1.5rem;
+				text-align: center;
+				margin-bottom: 1rem;
+				font-weight: bold;
+			}
+
+		.main-content {
+			margin-left: 250px;
+			padding: 40px;
+			width: calc(100% - 250px); /* Sidebar dışında kalan alan */
+			display: flex;
+			justify-content: center;
+		}
+
+		.inner-content {
+			width: 100%;
+			max-width: 1000px;
+			background-color: white;
+			padding: 20px;
+			box-shadow: 0 0 10px rgba(0,0,0,0.1);
+			border-radius: 8px;
+		}
+	</style>
+</head>
+<body>
+
+	<!-- SIDEBAR -->
+	<div class="sidebar">
+		<div class="sidebar-header">Admin Paneli</div>
+		<a asp-controller="Default" asp-action="Index"><i class="fas fa-home"></i> Siteye Git</a>
+		<a asp-controller="About" asp-action="AboutList"><i class="fas fa-user"></i> Hakkımda</a>
+		<a asp-controller="Experience" asp-action="ExperienceList"><i class="fas fa-briefcase"></i> Deneyimler</a>
+		<a asp-controller="Portfolio" asp-action="PortfolioList"><i class="fas fa-images"></i> Portfolyo</a>
+		<a asp-controller="Skill" asp-action="SkillList"><i class="fas fa-tasks"></i> Yetenekler</a>
+		<a asp-controller="Testimonial" asp-action="TestimonialList"><i class="fas fa-comments"></i> Referanslar</a>
+		<a asp-controller="Contact" asp-action="ContactList"><i class="fas fa-address-book"></i> İletişim Bilgileri</a>
+		<a asp-controller="SocialMedia" asp-action="SocialMediaList"><i class="fas fa-share-alt"></i> Sosyal Medya</a>
+		<a asp-controller="Message" asp-action="MessageList"><i class="fas fa-envelope"></i> Gelen Kutusu</a>
+		<a asp-controller="Statistic" asp-action="Index"><i class="fas fa-chart-line"></i> İstatistikler</a>
+		<a href="/Login/Logout" class="text-danger"><i class="fas fa-sign-out-alt"></i> Çıkış Yap</a>
 	</div>
-</div>
+
+	<!-- MAIN CONTENT -->
+	@* <div class="main-content">
+		<div class="inner-content">
+			<h2>Ana İçerik Alanı</h2>
+			<p>Bu bölüm sayfa içeriğini gösterir.</p>
+		</div>
+	</div> *@
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -17,6 +17,7 @@ namespace MyPortfolioUdemy.DAL.Context
         public DbSet<Entities.Message> Messages { get; set; }
         public DbSet<Entities.Contact> Contacts { get; set; }
         public DbSet<Entities.Testimonial> Testimonials { get; set; }
-        public DbSet<Entities.Feature> Features{ get; set; } 
+        public DbSet<Entities.Feature> Features{ get; set; }
+        public DbSet<Entities.ToDoList> ToDoLists { get; set; }
     }
 }

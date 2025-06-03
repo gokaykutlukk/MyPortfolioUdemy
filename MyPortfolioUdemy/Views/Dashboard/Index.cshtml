@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+    var chartData = ViewBag.ChartData as List<(string Label, int Value)>;
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4">Yetenek Dağılımı</h2>
+    <canvas id="skillsChart" width="400" height="200"></canvas>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        var ctx = document.getElementById('skillsChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(chartData.Select(x => x.Label))),
+                datasets: [{
+                    label: 'Yüzdelik Dağılım',
+                    data: @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(chartData.Select(x => x.Value))),
+                    backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc', '#f6c23e']
+                }]
+            },
+            options: {
+                responsive: true
+            }
+        });
+    </script>
+}

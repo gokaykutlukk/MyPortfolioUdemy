@@ -1,0 +1,64 @@
+﻿@model List<MyPortfolioUdemy.DAL.Entities.About>
+
+@{
+    ViewData["Title"] = "Hakkımda Bilgileri";
+    Layout = "~/Views/LayoutController1/Index.cshtml";
+}
+
+<div class="content">
+    <div class="container-fluid">
+        <h4 class="page-title">Hakkımda</h4>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Hakkımda Bilgi Listesi</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-sub mb-3">
+                            Hakkımda bilgilerini aşağıdan görüntüleyebilir, güncelleyebilir veya silebilirsiniz.
+                        </div>
+
+                        <table class="table table-bordered table-hover">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Başlık</th>
+                                    <th scope="col">Açıklama</th>
+                                    <th scope="col">Detay</th>
+                                    <th scope="col">Sil</th>
+                                    <th scope="col">Güncelle</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.AboutId</td>
+                                        <td>@item.Title</td>
+                                        <td>@item.SubDescription</td>
+                                        <td>@item.Details</td>
+                                        <td>
+                                            <a href="/About/DeleteAbout/@item.AboutId" class="btn btn-sm btn-danger">
+                                                <i class="fa fa-trash"></i> Sil
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="/About/UpdateAbout/@item.AboutId" class="btn btn-sm btn-success">
+                                                <i class="fa fa-edit"></i> Güncelle
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                        <a href="/About/CreateAbout" class="btn btn-primary mt-3">
+                            <i class="fa fa-plus"></i> Yeni Hakkımda Bilgisi Ekle
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

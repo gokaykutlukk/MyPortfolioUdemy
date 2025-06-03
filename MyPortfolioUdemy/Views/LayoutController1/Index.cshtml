@@ -10,7 +10,8 @@
 	<div class="wrapper">
 		@await Component.InvokeAsync("_LayoutNavbarComponentPartial")
 		@await Component.InvokeAsync("_LayoutSidebarComponentPartial")
-		@RenderBody();
+		 @RenderBody();
+		@RenderSection("Scripts", required: false)
 	</div>
 	</div>
 </body>
